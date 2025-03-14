@@ -1,0 +1,10 @@
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\bin\Debug\calcuatorWindowForm.exe.config
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\bin\Debug\calcuatorWindowForm.exe
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\bin\Debug\calcuatorWindowForm.pdb
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.csproj.AssemblyReference.cache
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.Form1.resources
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.Properties.Resources.resources
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.csproj.GenerateResource.cache
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.csproj.CoreCompileInputs.cache
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.exe
+D:\userPract\pract\cSharp\calcuatorWindowForm\calcuatorWindowForm\obj\Debug\calcuatorWindowForm.pdb
