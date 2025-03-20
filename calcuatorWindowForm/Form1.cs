@@ -66,11 +66,11 @@ namespace calcuatorWindowForm
             int index = operationStr.Length - 1;
             if (index > -1)
             {
-               
+
                 char s = operationStr[index];
                 bool v = operationList.Contains(char.ToString(s));
                 if (v)
-               {                 
+                {
                     return true;
                 }
 
@@ -178,6 +178,29 @@ namespace calcuatorWindowForm
             }
         }
 
+        public void haveMutiOperation()
+        {
+            List<String> list = SliceWithIdx();
+
+            Console.WriteLine("haveMutiOperation  list " + list);
+
+            if (list.Count == 2)
+            {
+                SplitStrToList();
+
+                operationStr = answer.ToString();
+
+               Console.WriteLine("haveMutiOperation  sliceResult " + operationStr);
+            }
+
+        }
+
+        private List<String> SliceWithIdx()
+        {
+            idxOperation = CheckOperationIdx();
+            return SliceStr(idxOperation);
+        }
+
 
         private void nb7label_Click(object sender, EventArgs e)
         {
@@ -208,6 +231,7 @@ namespace calcuatorWindowForm
 
         private void divisionlabel_Click(object sender, EventArgs e)
         {
+            haveMutiOperation();
             ChecklastIndex("/");
         }
 
@@ -237,6 +261,7 @@ namespace calcuatorWindowForm
 
         private void multipliedlabel_Click(object sender, EventArgs e)
         {
+            haveMutiOperation();
             ChecklastIndex("*");
         }
 
@@ -266,6 +291,7 @@ namespace calcuatorWindowForm
 
         private void minuslabel_Click(object sender, EventArgs e)
         {
+            haveMutiOperation();
             ChecklastIndex("–");
         }
 
@@ -331,16 +357,18 @@ namespace calcuatorWindowForm
                     operationStr += 0;
                     Console.WriteLine($"sliceStr2 empty, !FirstIsZero(slicestr1) {list[0]}");
                 }
-                else
-                {
-                    Console.WriteLine($"sliceStr2 empty, FirstIsZero(slicestr1) {list[0]}");
 
-                }
             }
             else
             {
-                //check sliceStr2[0] is  zero
+                //check sliceStr2[0] is  zero 17 + [1_9]
                 if (!FirstIsZero(list[1]) && !list[1].Equals(" "))
+                {
+                    operationStr += 0;
+                    Console.WriteLine($"sliceStr2 not empty, !FirstIsZero(slicestr2) {list[1]}");
+                }
+                // 17 + 
+                if (list[1].Equals(" "))
                 {
                     operationStr += 0;
                     Console.WriteLine($"sliceStr2 not empty, !FirstIsZero(slicestr2) {list[1]}");
@@ -350,37 +378,52 @@ namespace calcuatorWindowForm
             resultlable.Text = operationStr;
         }
 
-       
+
         private void dotlabel_Click(object sender, EventArgs e)
         {
             //check before operation have dot.
             //slice string with operation then check dot.
             idxOperation = CheckOperationIdx();
-            var list = SliceStr(idxOperation);
-
-           
-            if (list.Count == 2)
+            /*
+            if (idxOperation == -1)
             {
-             
-                //add space and zero
-                if(list[1].Equals(""))
+                Console.WriteLine($" idxOperation == -1 {operationStr}");
+                if (operationStr.Equals(""))
                 {
-                    Console.WriteLine("list[1] is empty.");
+                    Console.WriteLine("idxOperation == -1 and str == space");
                     operationStr += " 0";
                 }
-
-                haveDot2 = list[1].Contains(dot.ToString());
-                Console.WriteLine($"idxOperation != -1  sliceStr2 {list[1]} havedot {haveDot2}");
-          
-                AddDot(haveDot2);
             }
             else
             {
-                
-                haveDot1 = list[0].Contains(dot.ToString());
-                Console.WriteLine($"idxOperation == -1  sliceStr0 {list[0]} havedot {haveDot1}");
-                AddDot(haveDot1);
-            }
+            */
+                var list = SliceStr(idxOperation);
+
+                // if last click total, have to let result to be 0
+                if (list.Count == 2)
+                {
+
+                    //add space and zero
+                    if (list[1].Equals(""))
+                    {
+                        Console.WriteLine("list[1] is empty.");
+                        operationStr += " 0";
+                    }
+
+                    haveDot2 = list[1].Contains(dot.ToString());
+                    Console.WriteLine($"idxOperation != -1  sliceStr2 {list[1]} havedot {haveDot2}");
+
+                    AddDot(haveDot2);
+                }
+                else
+                {
+
+                    haveDot1 = list[0].Contains(dot.ToString());
+                    Console.WriteLine($"idxOperation == -1  sliceStr0 {list[0]} havedot {haveDot1}");
+                    AddDot(haveDot1);
+                }
+          //  }
+
         }
 
         private void AddDot(bool str)
@@ -394,13 +437,14 @@ namespace calcuatorWindowForm
 
         private void pluslabel_Click(object sender, EventArgs e)
         {
+            haveMutiOperation();
             ChecklastIndex("+");
         }
 
         private void totallabel_Click(object sender, EventArgs e)
         {
             SplitStrToList();
-
+            idxOperation = -1;
             operationStr = ConvertBackDot(answer.ToString());
             resultlable.Text = operationStr;
 
